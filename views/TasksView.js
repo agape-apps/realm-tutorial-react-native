@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import styles from '../stylesheet';
 
 import { Overlay, Button } from 'react-native-elements';
@@ -26,11 +26,7 @@ export function TasksView({ navigation, route }) {
   }, []);
 
   return (
-    <View>
-      {tasks.map((task) =>
-        task ? <TaskItem key={`${task._id}`} task={task} /> : null
-      )}
-
+    <ScrollView>
       {name === 'My Project' ? (
         <>
           <View style={styles.manageTeamButtonContainer}>
@@ -48,6 +44,9 @@ export function TasksView({ navigation, route }) {
           </Overlay>
         </>
       ) : null}
-    </View>
+      {tasks.map((task) =>
+        task ? <TaskItem key={`${task._id}`} task={task} /> : null
+      )}
+    </ScrollView>
   );
 }
