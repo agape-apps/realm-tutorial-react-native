@@ -5,6 +5,9 @@ import { Text, ListItem, Button } from 'react-native-elements';
 
 import { useAuth } from '../providers/AuthProvider';
 
+// * not offline capable because of calls to backend functions
+// Tasks of Team Members remain accessible offline, but after
+// restarting the app, Team Members' Task lists are not visible.
 export function ManageTeam() {
   const { user } = useAuth();
   const [newTeamMember, setNewTeamMember] = useState(null);
