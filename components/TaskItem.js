@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Text, ListItem } from "react-native-elements";
-import { useTasks } from "../providers/TasksProvider";
-import { ActionSheet } from "./ActionSheet";
-import { Task } from "../schemas";
+import React, { useState } from 'react';
+import { Text, ListItem } from 'react-native-elements';
+import { useTasks } from '../providers/TasksProvider';
+import { ActionSheet } from './ActionSheet';
+import { Task } from '../schemas';
 
 export function TaskItem({ task }) {
   const [actionSheetVisible, setActionSheetVisible] = useState(false);
@@ -10,7 +10,7 @@ export function TaskItem({ task }) {
   const { deleteTask, setTaskStatus } = useTasks();
   const actions = [
     {
-      title: "Delete",
+      title: 'Delete',
       action: () => {
         deleteTask(task);
       },
@@ -21,9 +21,9 @@ export function TaskItem({ task }) {
   // move the task into that status. Rather than creating a generic method to
   // avoid repetition, we split each status to separate each case in the code
   // below for demonstration purposes.
-  if (task.status !== "" && task.status !== Task.STATUS_OPEN) {
+  if (task.status !== '' && task.status !== Task.STATUS_OPEN) {
     actions.push({
-      title: "Mark Open",
+      title: 'Mark Open',
       action: () => {
         setTaskStatus(task, Task.STATUS_OPEN);
       },
@@ -31,7 +31,7 @@ export function TaskItem({ task }) {
   }
   if (task.status !== Task.STATUS_IN_PROGRESS) {
     actions.push({
-      title: "Mark In Progress",
+      title: 'Mark In Progress',
       action: () => {
         setTaskStatus(task, Task.STATUS_IN_PROGRESS);
       },
@@ -39,7 +39,7 @@ export function TaskItem({ task }) {
   }
   if (task.status !== Task.STATUS_COMPLETE) {
     actions.push({
-      title: "Mark Complete",
+      title: 'Mark Complete',
       action: () => {
         setTaskStatus(task, Task.STATUS_COMPLETE);
       },
