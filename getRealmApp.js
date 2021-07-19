@@ -6,7 +6,7 @@ import Realm from 'realm';
 let app;
 
 // Returns the shared instance of the Realm app.
-export function getRealmApp() {
+export default function getRealmApp() {
   if (app === undefined) {
     const appId = 'tasktracker-klsjn'; // Set Realm app ID here.
     const appConfig = {
