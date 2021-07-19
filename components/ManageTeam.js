@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { View, Button, TextInput, Alert } from "react-native";
-import styles from "../stylesheet";
-import { Text, ListItem } from "react-native-elements";
+import React, { useState, useEffect } from 'react';
+import { View, TextInput, Alert } from 'react-native';
+import styles from '../stylesheet';
+import { Text, ListItem, Button } from 'react-native-elements';
 
-import { useAuth } from "../providers/AuthProvider";
+import { useAuth } from '../providers/AuthProvider';
 
 export function ManageTeam() {
   const { user } = useAuth();
@@ -17,7 +17,7 @@ export function ManageTeam() {
       const teamMembers = await user.functions.getMyTeamMembers([]);
       setTeamMemberList(teamMembers);
     } catch (err) {
-      Alert.alert("An error occurred while getting team members", err);
+      Alert.alert('An error occurred while getting team members', err);
     }
   };
 
@@ -28,7 +28,7 @@ export function ManageTeam() {
       await user.functions.addTeamMember(newTeamMember);
       getTeam();
     } catch (err) {
-      Alert.alert("An error occurred while adding a team member", err.message);
+      Alert.alert('An error occurred while adding a team member', err.message);
     }
   };
 
@@ -39,19 +39,19 @@ export function ManageTeam() {
       await user.functions.removeTeamMember(email);
       getTeam();
     } catch (err) {
-      Alert.alert("An error occurred while removing a team member", err);
+      Alert.alert('An error occurred while removing a team member', err);
     }
   };
 
   const openDeleteDialogue = (member) => {
-    Alert.alert("Remove the following member from your team?", member.name, [
+    Alert.alert('Remove the following member from your team?', member.name, [
       {
-        text: "Remove",
+        text: 'Remove',
         onPress: () => {
           removeTeamMember(member.name);
         },
       },
-      { text: "cancel", style: "cancel" },
+      { text: 'cancel', style: 'cancel' },
     ]);
   };
 
@@ -79,12 +79,16 @@ export function ManageTeam() {
         <TextInput
           onChangeText={(text) => setNewTeamMember(text)}
           value={newTeamMember}
-          placeholder="new team member username"
+          placeholder='new team member username'
           style={styles.addTeamMemberInput}
-          autoCapitalize="none"
+          autoCapitalize='none'
         />
       </View>
-      <Button onPress={() => addTeamMember(newTeamMember)} title="Add Member" />
+      <Button
+        type='outline'
+        onPress={() => addTeamMember(newTeamMember)}
+        title='Add Member'
+      />
     </View>
   );
 }

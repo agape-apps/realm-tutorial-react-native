@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { Overlay, Input, Button } from "react-native-elements";
-import styles from "../stylesheet";
+import React, { useState } from 'react';
+import { Overlay, Input, Button } from 'react-native-elements';
+import styles from '../stylesheet';
 
 // The AddTask is a button for adding tasks. When the button is pressed, an
 // overlay shows up to request user input for the new task name. When the
@@ -8,23 +8,24 @@ import styles from "../stylesheet";
 // task is created in the realm.
 export function AddTask({ createTask }) {
   const [overlayVisible, setOverlayVisible] = useState(false);
-  const [newTaskName, setNewTaskName] = useState("");
+  const [newTaskName, setNewTaskName] = useState('');
 
   return (
     <>
       <Overlay
         isVisible={overlayVisible}
-        overlayStyle={{ width: "90%" }}
+        overlayStyle={{ width: '90%' }}
         onBackdropPress={() => setOverlayVisible(false)}
       >
         <>
           <Input
-            placeholder="New Task Name"
+            placeholder='New Task Name'
             onChangeText={(text) => setNewTaskName(text)}
             autoFocus={true}
           />
           <Button
-            title="Create"
+            title='Create'
+            type='outline'
             onPress={() => {
               setOverlayVisible(false);
               createTask(newTaskName);
@@ -33,9 +34,9 @@ export function AddTask({ createTask }) {
         </>
       </Overlay>
       <Button
-        type="clear"
+        type='clear'
         titleStyle={styles.plusButton}
-        title="&#x2b;"
+        title='&#x2b;'
         onPress={() => {
           setOverlayVisible(true);
         }}
