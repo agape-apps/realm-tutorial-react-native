@@ -1,24 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, TextInput, Button, Alert } from "react-native";
-import { useAuth } from "../providers/AuthProvider";
-import styles from "../stylesheet";
+import React, { useEffect, useState } from 'react';
+import { View, Text, TextInput, Alert } from 'react-native';
+import { Button } from 'react-native-elements';
+import { useAuth } from '../providers/AuthProvider';
+import styles from '../stylesheet';
 
 export function WelcomeView({ navigation }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const { user, signUp, signIn } = useAuth();
 
   useEffect(() => {
     // If there is a user logged in, go to the Projects page.
     if (user != null) {
-      navigation.navigate("Projects");
+      navigation.navigate('Projects');
     }
   }, [user]);
 
   // The onPressSignIn method calls AuthProvider.signIn with the
   // email/password in state.
   const onPressSignIn = async () => {
-    console.log("Press sign in");
+    console.log('Press sign in');
     try {
       await signIn(email, password);
     } catch (error) {
@@ -39,27 +40,36 @@ export function WelcomeView({ navigation }) {
 
   return (
     <View>
-      <Text>Signup or Signin:</Text>
       <View style={styles.inputContainer}>
         <TextInput
           onChangeText={setEmail}
           value={email}
-          placeholder="email"
+          placeholder='email'
           style={styles.inputStyle}
-          autoCapitalize="none"
+          autoCapitalize='none'
         />
       </View>
       <View style={styles.inputContainer}>
         <TextInput
           onChangeText={(text) => setPassword(text)}
           value={password}
-          placeholder="password"
+          placeholder='password'
           style={styles.inputStyle}
           secureTextEntry
         />
       </View>
-      <Button onPress={onPressSignIn} title="Sign In" />
-      <Button onPress={onPressSignUp} title="Sign Up" />
+      <Button
+        containerStyle={styles.inputContainer}
+        type='outline'
+        onPress={onPressSignIn}
+        title='Sign In'
+      />
+      <Button
+        containerStyle={styles.inputContainer}
+        type='outline'
+        onPress={onPressSignUp}
+        title='Sign Up'
+      />
     </View>
   );
 }
