@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   inputContainer: {
     padding: 5,
   },
   inputStyle: {
-    borderColor: "black",
+    borderColor: '#ccc',
     borderWidth: 1,
     padding: 10,
     borderRadius: 2,
@@ -17,21 +17,21 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   addTeamMemberInput: {
-    borderBottomColor: "black",
+    borderBottomColor: '#888',
     borderBottomWidth: 1,
     marginTop: 5,
     fontSize: 18,
   },
   manageTeamButtonContainer: {
-    textAlign: "left",
-    borderTopColor: "grey",
+    textAlign: 'left',
+    borderTopColor: 'grey',
     borderTopWidth: 1,
-    borderBottomColor: "grey",
+    borderBottomColor: 'grey',
     borderBottomWidth: 1,
   },
   plusButton: {
     fontSize: 28,
-    fontWeight: "400",
+    fontWeight: '400',
   },
 });
 
