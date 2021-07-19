@@ -1,16 +1,16 @@
-import React from "react";
-import "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { AuthProvider } from "./providers/AuthProvider";
-import { TasksProvider } from "./providers/TasksProvider";
+import { AuthProvider } from './providers/AuthProvider';
+import { TasksProvider } from './providers/TasksProvider';
 
-import { WelcomeView } from "./views/WelcomeView";
-import { ProjectsView } from "./views/ProjectsView";
-import { TasksView } from "./views/TasksView";
+import { WelcomeView } from './views/WelcomeView';
+import { ProjectsView } from './views/ProjectsView';
+import { TasksView } from './views/TasksView';
 
-import { Logout } from "./components/Logout";
+import { Logout } from './components/Logout';
 
 const Stack = createStackNavigator();
 
@@ -20,22 +20,22 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name="Welcome View"
+            name='Welcome View'
             component={WelcomeView}
-            options={{ title: "Task Tracker" }}
+            options={{ title: 'Task Tracker' }}
           />
           <Stack.Screen
-            name="Projects"
+            name='Projects'
             component={ProjectsView}
-            title="ProjectsView"
-            headerBackTitle="log out"
+            title='ProjectsView'
+            headerBackTitle='log out'
             options={{
               headerLeft: function Header() {
                 return <Logout />;
               },
             }}
           />
-          <Stack.Screen name="Task List">
+          <Stack.Screen name='Task List'>
             {(props) => {
               const { navigation, route } = props;
               const { user, projectPartition } = route.params;
