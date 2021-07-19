@@ -1,13 +1,19 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import Realm from "realm";
-import { getRealmApp } from "../getRealmApp";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useRef,
+} from 'react';
+import Realm from 'realm';
+import getRealmApp from '../getRealmApp';
 
 // Access the Realm App.
 const app = getRealmApp();
 
 // Create a new Context object that will be provided to descendants of
 // the AuthProvider.
-const AuthContext = React.createContext(null);
+const AuthContext = createContext(null);
 
 // The AuthProvider is responsible for user management and provides the
 // AuthContext value to its descendants. Components under an AuthProvider can
@@ -24,9 +30,10 @@ const AuthProvider = ({ children }) => {
 
     // The current user always has their own project, so we don't need
     // to wait for the user object to load before displaying that project.
-    const myProject = { name: "My Project", partition: `project=${user.id}` };
+    const myProject = { name: 'My Project', partition: `project=${user.id}` };
     setProjectData([myProject]);
 
+    // the partitions are derived from the user ID
     const config = {
       sync: {
         user,
@@ -38,7 +45,7 @@ const AuthProvider = ({ children }) => {
     // to get the projects that the logged in user is a member of
     Realm.open(config).then((userRealm) => {
       realmRef.current = userRealm;
-      const users = userRealm.objects("User");
+      const users = userRealm.objects('User');
 
       users.addListener(() => {
         // The user custom data object may not have been loaded on
@@ -108,7 +115,7 @@ const AuthProvider = ({ children }) => {
 const useAuth = () => {
   const auth = useContext(AuthContext);
   if (auth == null) {
-    throw new Error("useAuth() called outside of a AuthProvider?");
+    throw new Error('useAuth() called outside of a AuthProvider?');
   }
   return auth;
 };
