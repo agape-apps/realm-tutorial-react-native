@@ -1,3 +1,6 @@
+// Defines which screens are in the app and sets up the navigation system.
+// * AuthProvider wraps the whole app
+
 import React from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
