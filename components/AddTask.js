@@ -1,3 +1,6 @@
+// A button that, when pressed, prompts the user to enter new task information
+// and creates it with the given createTask function.
+
 import React, { useState } from 'react';
 import { Overlay, Input, Button } from 'react-native-elements';
 import styles from '../stylesheet';

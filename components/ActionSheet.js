@@ -1,5 +1,7 @@
-import React from "react";
-import { ListItem, Overlay } from "react-native-elements";
+// A component that presents the user with a list of actions.
+
+import React from 'react';
+import { ListItem, Overlay } from 'react-native-elements';
 
 // Action sheet contains a list of actions. Each action should have a `title`
 // string and `action` function property. A "Cancel" action is automatically
@@ -8,12 +10,12 @@ import { ListItem, Overlay } from "react-native-elements";
 // action sheet be closed.
 export function ActionSheet({ actions, visible, closeOverlay }) {
   const cancelAction = {
-    title: "Cancel",
+    title: 'Cancel',
     action: closeOverlay,
   };
   return (
     <Overlay
-      overlayStyle={{ width: "90%" }}
+      overlayStyle={{ width: '90%' }}
       isVisible={visible}
       onBackdropPress={closeOverlay}
     >

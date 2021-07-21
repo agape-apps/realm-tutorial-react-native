@@ -1,3 +1,6 @@
+// The screen showing the tasks for a given project. If this is the logged-in
+// user's own project, the TasksView includes a button to  open a ManageTeam view.
+
 import React, { useState, useEffect } from 'react';
 
 import { View, ScrollView } from 'react-native';

@@ -1,7 +1,10 @@
-import React from "react";
-import { View } from "react-native";
-import { useAuth } from "../providers/AuthProvider";
-import { ListItem } from "react-native-elements";
+// The screen that presents a list of projects that the current user is a team
+// member of.
+
+import React from 'react';
+import { View } from 'react-native';
+import { useAuth } from '../providers/AuthProvider';
+import { ListItem } from 'react-native-elements';
 
 export function ProjectsView({ navigation }) {
   const { projectData } = useAuth();
@@ -9,7 +12,7 @@ export function ProjectsView({ navigation }) {
   // the onClickProject navigates to the Task List with the project name
   // and project partition value
   const onClickProject = async (project) => {
-    navigation.navigate("Task List", {
+    navigation.navigate('Task List', {
       name: project.name,
       projectPartition: project.partition,
     });

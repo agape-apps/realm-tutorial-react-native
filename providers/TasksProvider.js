@@ -1,3 +1,6 @@
+// Defines the TasksProvider, which handles fetching, adding, updating, and
+// deleting tasks within a project.
+
 import React, { useContext, useState, useEffect, useRef } from 'react';
 import Realm from 'realm';
 import { Task } from '../schemas';
@@ -16,16 +19,18 @@ const TasksProvider = ({ children, projectPartition }) => {
 
   useEffect(() => {
     // You may want to sync changes in the background to display partial data to
-    // the user while the synced realm downloads data from the server, preventing
-    // the user experience from being blocked. We recommend syncing changes in the
-    // background for applications in which the user's device may go offline.
+    // the user while the synced realm downloads data from the server,
+    // preventing the user experience from being blocked. We recommend syncing
+    // changes in the background for applications in which the user's device
+    // may go offline.
     // To sync changes in the background, *open a synced realm synchronously*.
     const OpenRealmBehaviorConfiguration = {
       type: 'openImmediately',
     };
-    // Create a Configuration object, which must include the sync property defining
-    // a SyncConfiguration object. Set this OpenRealmBehaviorConfiguration object as
-    // the value for the newRealmFileBehavior and existingRealmFileBehavior fields of
+    // Create a Configuration object, which must include the sync property
+    // defining a SyncConfiguration object. Set this
+    // OpenRealmBehaviorConfiguration object as the value for the
+    // newRealmFileBehavior and existingRealmFileBehavior fields of
     // the SyncConfiguration.
     const config = {
       sync: {
@@ -33,7 +38,7 @@ const TasksProvider = ({ children, projectPartition }) => {
         partitionValue: projectPartition,
         // The behavior to use when this is the first time opening a realm.
         newRealmFileBehavior: OpenRealmBehaviorConfiguration,
-        // The behavior to use when a realm file already exists locally,LIA Task 4
+        // The behavior to use when a realm file already exists locally,
         // i.e. you have previously opened the realm.
         existingRealmFileBehavior: OpenRealmBehaviorConfiguration,
       },
@@ -127,7 +132,8 @@ const TasksProvider = ({ children, projectPartition }) => {
 const useTasks = () => {
   const task = useContext(TasksContext);
   if (task == null) {
-    throw new Error('useTasks() called outside of a TasksProvider?'); // an alert is not placed because this is an error for the developer not the user
+    throw new Error('useTasks() called outside of a TasksProvider?');
+    // an alert is not placed because this is an error for the developer not the user
   }
   return task;
 };
