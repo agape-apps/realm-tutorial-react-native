@@ -1,3 +1,5 @@
+// A button that handles user log out.
+
 import * as React from 'react';
 import { Alert } from 'react-native';
 import { Button } from 'react-native-elements';

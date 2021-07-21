@@ -1,3 +1,5 @@
+// The screen that allows a user to log in or register a user.
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, TextInput, Alert } from 'react-native';
 import { Button } from 'react-native-elements';

@@ -1,3 +1,6 @@
+// Defines the AuthProvider, which handles user login, log out, and project
+// membership information for the current user.
+
 import React, {
   createContext,
   useContext,

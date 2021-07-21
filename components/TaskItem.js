@@ -1,3 +1,7 @@
+// A list item that represents a task in a list. When pressed, it presents an
+// ActionSheet with actions corresponding to deleting the task or updating the
+// task's status.
+
 import React, { useState } from 'react';
 import { Text, ListItem } from 'react-native-elements';
 import { useTasks } from '../providers/TasksProvider';
