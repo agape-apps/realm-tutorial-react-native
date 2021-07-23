@@ -54,6 +54,7 @@ const TasksProvider = ({ children, projectPartition }) => {
       sortedTasks.addListener(() => {
         setTasks([...sortedTasks]);
       });
+      console.log('* REALM PATH: ' + Realm.defaultPath);
     });
 
     return () => {
