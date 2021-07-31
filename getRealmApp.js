@@ -11,7 +11,7 @@ let app;
 // https://docs.mongodb.com/realm-sdks/js/latest/Realm.App.html
 export default function getRealmApp() {
   if (app === undefined) {
-    const appId = 'tasktracker4oregon-eeefo'; // Set Realm app ID here.
+    const appId = 'tasktracker7singapore-uuvgs'; // Set Realm app ID here.
     const appConfig = {
       id: appId,
       timeout: 10000,
