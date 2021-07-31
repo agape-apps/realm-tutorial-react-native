@@ -18,28 +18,16 @@ const TasksProvider = ({ children, projectPartition }) => {
   const realmRef = useRef(null);
 
   useEffect(() => {
-    // You may want to sync changes in the background to display partial data to
-    // the user while the synced realm downloads data from the server,
-    // preventing the user experience from being blocked. We recommend syncing
-    // changes in the background for applications in which the user's device
-    // may go offline.
-    // To sync changes in the background, *open a synced realm synchronously*.
+    // Enables offline-first: opens a local realm immediately without waiting
+    // for the download of a synchronized realm to be completed.
     const OpenRealmBehaviorConfiguration = {
       type: 'openImmediately',
     };
-    // Create a Configuration object, which must include the sync property
-    // defining a SyncConfiguration object. Set this
-    // OpenRealmBehaviorConfiguration object as the value for the
-    // newRealmFileBehavior and existingRealmFileBehavior fields of
-    // the SyncConfiguration.
     const config = {
       sync: {
         user: user,
         partitionValue: projectPartition,
-        // The behavior to use when this is the first time opening a realm.
         newRealmFileBehavior: OpenRealmBehaviorConfiguration,
-        // The behavior to use when a realm file already exists locally,
-        // i.e. you have previously opened the realm.
         existingRealmFileBehavior: OpenRealmBehaviorConfiguration,
       },
     };
